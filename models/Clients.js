@@ -48,12 +48,6 @@ const createModelClient = (sequelize, DataTypes) => {
       },
       email: {
         type: DataTypes.STRING(100),
-        validate: {
-          isEmail: {
-            args: true,
-            msg: "Email address must be valid",
-          },
-        },
       },
       phone: {
         type: DataTypes.STRING,
