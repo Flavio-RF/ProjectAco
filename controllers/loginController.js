@@ -8,7 +8,9 @@ module.exports = {
     try {
       const user = await verifyCredentials(email, password);
       if (user) {
-        const token = jwt.sign({ sub: user.id }, process.env.JWT_SECRET);
+        const token = jwt.sign({ sub: user.id }, process.env.JWT_SECRET, {
+          expiresIn: "30d",
+        });
         res.json({
           accessToken: token,
         });
