@@ -51,7 +51,13 @@ module.exports = {
   },
   updateJob: async (req, res) => {
     const { state, date, time, plague, observations, reason } = req.body;
+
     try {
+      const foundedTask = await Jobs.findByPk(req.params.id);
+      if (!foundedTask) {
+        res.status(404).json({ error: "Task not found" });
+        return;
+      }
       const updatedRows = await Jobs.update(
         {
           state,
@@ -70,7 +76,6 @@ module.exports = {
       if (updatedRows) {
         res.json({ message: "Update successful." });
       } else {
-        console.log("Jobs not found");
         res.status(400).json({ error: "Jobs not found." });
       }
     } catch (error) {

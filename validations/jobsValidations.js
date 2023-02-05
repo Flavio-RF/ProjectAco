@@ -1,5 +1,5 @@
 const { body, param } = require("express-validator");
-const { Clients } = require("../models");
+const { Clients, Jobs } = require("../models");
 
 module.exports = {
   validateCreateJobs: [
@@ -54,5 +54,14 @@ module.exports = {
       .isString()
       .exists()
       .withMessage("the field can't be undefined."),
+    param("id")
+      .custom(async (value) => {
+        const jobsID = await Jobs.findByPk(value);
+        if (!jobsID) {
+          throw new Error("Invalid taskId");
+        }
+      })
+      .notEmpty()
+      .exists(),
   ],
 };

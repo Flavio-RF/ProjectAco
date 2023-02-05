@@ -1,9 +1,9 @@
 Como iniciar el proyecto:
 
 instalar modulos:
-npm install
+"npm i"
 
-configurar archivo .env
+configurar archivo ".env"
 
 se inicializa con:
 "npm run dev"
