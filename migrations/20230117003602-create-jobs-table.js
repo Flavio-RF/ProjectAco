@@ -30,7 +30,6 @@ module.exports = {
         type: DataTypes.STRING(100),
       },
       ClientId: {
-        allowNull: false,
         type: DataTypes.INTEGER,
         references: {
           model: "Clients",
