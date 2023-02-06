@@ -29,15 +29,6 @@ module.exports = {
       reason: {
         type: DataTypes.STRING(100),
       },
-      ClientId: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: "Clients",
-          key: "id",
-        },
-        onUpdate: "CASCADE",
-        onDelete: "SET NULL",
-      },
     });
   },
 

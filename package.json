@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
+    "start": "node index.js",
     "migrate:up": "node -e \"require('./config/migrations').migrate()\"",
     "migrate:undo": "node -e \"require('./config/migrations').migrateRollback()\"",
     "migrate:undo:all": "node -e \"require('./config/migrations').migrateReset()\"",
