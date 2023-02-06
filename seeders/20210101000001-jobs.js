@@ -13,8 +13,8 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     await Jobs.create({
       state: false,
-      date: moment().format("L"),
-      time: moment().format("LT"),
+      date: moment().format("YYYY-MM-DD"),
+      time: moment().format("HH:mm:ss"),
       plague: "Cucarachas",
       observations: "Cliente especial",
       reason: "Fumigacion con liquido",
@@ -22,8 +22,8 @@ module.exports = {
     });
     await Jobs.create({
       state: false,
-      date: moment().format("L"),
-      time: moment().format("LT"),
+      date: moment().format("YYYY-MM-DD"),
+      time: moment().format("HH:mm:ss"),
       plague: "Cucarachas",
       observations: "Cliente especial",
       reason: "Fumigacion con liquido",
@@ -31,8 +31,8 @@ module.exports = {
     });
     await Jobs.create({
       state: false,
-      date: moment().format("L"),
-      time: moment().format("LT"),
+      date: moment().format("YYYY-MM-DD"),
+      time: moment().format("HH:mm:ss"),
       plague: "Cucarachas",
       observations: "Cliente especial",
       reason: "Fumigacion con liquido",
