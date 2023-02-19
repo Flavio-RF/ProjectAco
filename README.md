@@ -41,7 +41,7 @@ Este proyecto incluye los siguientes scripts:
 
 - `init` : inicializa el proyecto creando la base de datos y ejecutando todas las migraciones y seeds disponibles.
 
-# Como iniciar el proyecto:
+## Como iniciar el proyecto:
 
 ### instalar modulos:
 - "npm i"
