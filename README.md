@@ -41,14 +41,12 @@ Este proyecto incluye los siguientes scripts:
 
 - `init` : inicializa el proyecto creando la base de datos y ejecutando todas las migraciones y seeds disponibles.
 
-# Como iniciar el proyecto:
+## Como iniciar el proyecto:
 
-## instalar modulos:
-
+### instalar modulos:
 - "npm i"
 
-## configurar archivo ".env"
-
+### configurar archivo ".env"
 - DB_USER="root"
 
 - DB_PASSWORD="root"
@@ -61,6 +59,5 @@ Este proyecto incluye los siguientes scripts:
 
 - APP_ENV="test"
 
-## se inicializa con:
-
+### se inicializa con:
 - "npm run dev"
