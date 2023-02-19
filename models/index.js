@@ -3,16 +3,22 @@ const { createModelClient } = require("./Clients");
 const { createModelJobs } = require("./Jobs");
 const { createModelUsers } = require("./Users");
 
+const connectionConfig = {
+  host: process.env.DB_HOST, // Dirección del servidor
+  port: process.env.DB_PORT, // Puerto del servidor
+  dialect: process.env.DB_DIALECT, // Tipo de base de datos
+  logging: false, // Deshabilitamos la salida por consola
+};
+
+if (connectionConfig.dialect === "postgres") {
+  connectionConfig.dialectModule = require("pg");
+}
+
 const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,
   process.env.DB_PASSWORD,
-  {
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    dialect: process.env.DB_DIALECT,
-    logging: false,
-  }
+  connectionConfig
 );
 
 const Clients = createModelClient(sequelize, DataTypes);
