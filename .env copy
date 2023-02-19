@@ -1,9 +1,17 @@
-# SERVER_PORT=3080
+# test
 
 # DB_USER=root
 # DB_PASSWORD=root
 # DB_NAME=db_test
-# DB_PORT=3306
+# DB_PORT=0000
+# JWT_SECRET=secret
+
+# APP_ENV=test
+
+
+# ----------------------------------------------------------------------------
+
+# development
 
 # DB_USER=user
 # DB_PASSWORD=password
@@ -12,3 +20,5 @@
 # DB_HOST=host
 # DB_DIALECT=postgres
 # JWT_SECRET=secret
+
+# APP_ENV=development

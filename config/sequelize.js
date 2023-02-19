@@ -1,6 +1,7 @@
 /**
  * Este archivo es necesario para poder correr
  * las migraciones con Sequelize CLI.
+ * APP_ENV controla que se ejecuta: "test | development | production"
  */
 
 require("dotenv").config();
