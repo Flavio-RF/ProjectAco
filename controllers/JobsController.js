@@ -40,7 +40,7 @@ module.exports = {
     try {
       const Job = await Jobs.findByPk(req.params.id);
       if (!Job) {
-        res.status(400).json({ message: "Job not found." });
+        res.status(400).json({ error: "Job not found." });
       } else {
         res.status(200).json(Job);
       }

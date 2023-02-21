@@ -31,8 +31,11 @@ module.exports = {
           model: Jobs,
         },
       });
-      console.log(client);
-      res.status(200).json(client);
+      if (!client) {
+        res.status(400).json({ error: "Client not found." });
+      } else {
+        res.status(200).json(client);
+      }
     } catch (error) {
       res.status(400).json(error);
     }
