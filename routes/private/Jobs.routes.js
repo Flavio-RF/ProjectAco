@@ -11,7 +11,7 @@ const router = Router();
 router.get("/tasks", Jobs.showJobs);
 
 router.post(
-  "/:id/tasks",
+  "/:id/newtasks",
   validatorMiddlewareBuilder(validateCreateJobs),
   Jobs.createJob
 );

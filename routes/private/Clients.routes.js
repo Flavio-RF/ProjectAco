@@ -8,17 +8,17 @@ const router = Router();
 // router.get("/inicio", clients.showClients);
 router.get("/", clients.showClients);
 router.post(
-  "/crear",
+  "/create",
   validatorMiddlewareBuilder(validateClient),
   clients.createClient
 );
-router.get("/:id/editar", clients.showClient);
+router.get("/:id/edit", clients.showClient);
 router.patch(
-  "/:id/editar",
+  "/:id/edit",
   validatorMiddlewareBuilder(validateClient),
   clients.updateClient
 );
-router.delete("/:id/borrar", clients.destroyClient);
+router.delete("/:id/delete", clients.destroyClient);
 
 // router.get("/clientes/:id/ficha", clients.showClients);
 // router.get("/clientes/ficha/:id/editar", clients.showClients);
