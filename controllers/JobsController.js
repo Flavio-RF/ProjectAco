@@ -25,10 +25,11 @@ module.exports = {
   showJobs: async (req, res) => {
     try {
       const { date, state, startDate, endDate } = req.query;
+      console.log(state);
 
       const where = {
         ...(date && { date }),
-        ...(state && { state }),
+        ...(state !== undefined && { state: state === "true" }),
         ...(startDate &&
           endDate && {
             date: {
@@ -36,6 +37,7 @@ module.exports = {
             },
           }),
       };
+      console.log(where);
 
       const jobs = await Jobs.findAll({
         attributes: { exclude: ["ClientId"] },
