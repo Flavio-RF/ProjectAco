@@ -1,12 +1,11 @@
 const { Jobs, Clients } = require("../models");
+const { Op } = require("sequelize");
 
 module.exports = {
   createJob: async (req, res) => {
     try {
       const ClientId = req.params.id;
-
       const { state, date, time, plague, observations, reason } = req.body;
-
       const createJobs = await Jobs.create({
         state,
         date,
@@ -25,30 +24,52 @@ module.exports = {
   },
   showJobs: async (req, res) => {
     try {
-      const allJobs = await Jobs.findAll({
-        where: {
-          state: false,
-        },
+      const { date, state, startDate, endDate } = req.query;
+
+      const where = {
+        ...(date && { date }),
+        ...(state && { state }),
+        ...(startDate &&
+          endDate && {
+            date: {
+              [Op.between]: [startDate, endDate],
+            },
+          }),
+      };
+
+      const jobs = await Jobs.findAll({
+        attributes: { exclude: ["ClientId"] },
+        where: Object.keys(where).length !== 0 ? where : undefined,
       });
-      res.status(200).json(allJobs);
+
+      res.status(200).json(jobs);
     } catch (error) {
-      res.status(400).json({ error: "Error to get jobs." });
       console.log(error);
+      res.status(400).json({ error: "Error to get jobs." });
     }
   },
+
   showJob: async (req, res) => {
     try {
-      const Job = await Jobs.findByPk(req.params.id);
-      if (!Job) {
+      const { id } = req.params;
+      const job = await Jobs.findByPk(id, {
+        include: {
+          model: Clients,
+          attributes: ["name", "email", "address", "zone", "phone", "mobile"],
+        },
+        attributes: { exclude: ["ClientId"] },
+      });
+      if (!job) {
         res.status(400).json({ error: "Job not found." });
       } else {
-        res.status(200).json(Job);
+        res.status(200).json(job);
       }
     } catch (error) {
       res.status(500).json({ error: "Internal Server error." });
       console.log(error);
     }
   },
+
   updateJob: async (req, res) => {
     const { state, date, time, plague, observations, reason } = req.body;
 
