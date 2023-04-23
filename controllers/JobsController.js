@@ -37,7 +37,6 @@ module.exports = {
             },
           }),
       };
-      console.log(where);
 
       const jobs = await Jobs.findAll({
         attributes: { exclude: ["ClientId"] },
