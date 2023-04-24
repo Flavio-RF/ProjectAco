@@ -58,7 +58,6 @@ module.exports = {
           model: Clients,
           attributes: ["name", "email", "address", "zone", "phone", "mobile"],
         },
-        attributes: { exclude: ["ClientId"] },
       });
       if (!job) {
         res.status(400).json({ error: "Job not found." });
