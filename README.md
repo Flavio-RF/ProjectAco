@@ -44,9 +44,11 @@ Este proyecto incluye los siguientes scripts:
 ## Como iniciar el proyecto:
 
 ### instalar modulos:
+
 - "npm i"
 
 ### configurar archivo ".env"
+
 - DB_USER="root"
 
 - DB_PASSWORD="root"
@@ -60,4 +62,9 @@ Este proyecto incluye los siguientes scripts:
 - APP_ENV="test"
 
 ### se inicializa con:
+
 - "npm run dev"
+
+### automatizacion:
+
+-"npm run init": resetea la base de datos, ingresa los seeds y ejecuta "npm run dev"

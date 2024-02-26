@@ -82,19 +82,29 @@ module.exports = {
     );
   },
   init: () => {
-    exec(
-      `npx sequelize-cli db:migrate:undo:all --env ${process.env.APP_ENV}; npx sequelize-cli db:migrate --env ${process.env.APP_ENV}; npx sequelize-cli db:seed:all --env ${process.env.APP_ENV};`,
-      (err, stdout, stderr) => {
-        if (err) {
-          console.error(`${stdout}`);
-        }
+    let start = `npx sequelize db:migrate:undo:all --env ${process.env.APP_ENV} && npx sequelize-cli db:migrate --env ${process.env.APP_ENV} && npx sequelize-cli db:seed:all --env ${process.env.APP_ENV}`;
 
-        console.log(`${stdout}`);
-        console.warn(`${stderr}`);
-      },
+    exec(start, (err, stdout, stderr) => {
+      if (err) {
+        console.error(`${stdout}`);
+      }
+
+      console.log(`${stdout}`);
+      console.warn(`${stderr}`);
+
+      if (!err) {
+        exec(`npm run dev`, (err, stdout, stderr) => {
+          if (err) {
+            console.log(`Error al ejecutar 'npm run dev': ${err}`);
+            return;
+          }
+          console.log(`${stdout}`);
+          console.log(`${stderr}`);
+        });
+      }
       console.log(
-        `npx sequelize-cli db:migrate:undo:all --env ${process.env.APP_ENV}; npx sequelize-cli db:migrate --env ${process.env.APP_ENV}; npx sequelize-cli db:seed:all --env ${process.env.APP_ENV}`
-      )
-    );
+        `Servidor corriendo en el puerto ${process.env.APP_PORT || 3000}!`
+      );
+    });
   },
 };

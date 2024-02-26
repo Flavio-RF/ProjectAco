@@ -7,7 +7,7 @@ const connectionConfig = {
   host: process.env.DB_HOST, // Dirección del servidor
   port: process.env.DB_PORT, // Puerto del servidor
   dialect: process.env.DB_DIALECT, // Tipo de base de datos
-  logging: false, // Deshabilitamos la salida por consola
+  logging: true, // Deshabilitamos la salida por consola
 };
 
 if (connectionConfig.dialect === "postgres") {
